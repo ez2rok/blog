@@ -12,3 +12,8 @@ title-block-banner: true
 ---
 
 
+Hello! I'm Eitan Turok. I like building things. And I am an obsessive learner.
+
+I am majoring in CS and Applied Mathematics at Columbia University. I am generally interested in deep learning (efficient training, geometric DL, interpretability) and theoretical CS (fine-grained complexity, graph algorithms).
+
+I do research under [Prof Itsik Pe’er](https://www.engineering.columbia.edu/faculty/itsik-peer) predicting diseases from the microbiome with non-Eculdidean embeddings. I also do research under [Prof Josh Alman](https://joshalman.com/) on the fine-grained complexity of dynamic programming problems.
