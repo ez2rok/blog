@@ -1,0 +1,30 @@
+[
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About me!"
+  },
+  {
+    "objectID": "posts/2023-08-17-post-with-code/index.html",
+    "href": "posts/2023-08-17-post-with-code/index.html",
+    "title": "Post With Code",
+    "section": "",
+    "text": "This is a post with executable code.\n1+1\n\n\n\n\n\nReusehttps://creativecommons.org/licenses/by/4.0/CitationBibTeX citation:@online{turok2023,\n  author = {Turok, Eitan and Malloc, Harlow},\n  title = {Post {With} {Code}},\n  date = {2023-08-17},\n  url = {https://ez2rok.github.io/blog//posts/2023-08-17-post-with-code},\n  langid = {en}\n}\nFor attribution, please cite this work as:\nTurok, Eitan, and Harlow Malloc. 2023. “Post With Code.”\nAugust 17, 2023. https://ez2rok.github.io/blog//posts/2023-08-17-post-with-code."
+  },
+  {
+    "objectID": "posts/2023-08-15-welcome/index.html",
+    "href": "posts/2023-08-15-welcome/index.html",
+    "title": "Welcome To My Blog",
+    "section": "",
+    "text": "This is the first post in my Quarto blog. Welcome!\n\nI’m excited to start blogging!\n\n\n\n\n\nReusehttps://creativecommons.org/licenses/by/4.0/CitationBibTeX citation:@online{turok2023,\n  author = {Turok, Eitan and Turok, Eitan},\n  title = {Welcome {To} {My} {Blog}},\n  date = {2023-08-15},\n  url = {https://ez2rok.github.io/blog//posts/2023-08-15-welcome},\n  langid = {en}\n}\nFor attribution, please cite this work as:\nTurok, Eitan, and Eitan Turok. 2023. “Welcome To My Blog.”\nAugust 15, 2023. https://ez2rok.github.io/blog//posts/2023-08-15-welcome."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Algorithmic Mutterings",
+    "section": "",
+    "text": "Hello 👋! I’m Eitan Turok. I like building things. And I am an obsessive learner 📚.   I am majoring in CS and Applied Mathematics at Columbia University. I am generally interested in deep learning (efficient training, geometric DL, interpretability) and theoretical CS (fine-grained complexity, graph algorithms).   I do research under Prof Itsik Pe’er predicting diseases from the microbiome with non-Eculdidean embeddings. I also do research under Prof Josh Alman on the fine-grained complexity of dynamic programming problems.\n\n\n\n\n\n\n\nBlog Posts\n\n\n\n\n\n\n\n\n\n  \n\n\n\n\nPost With Code\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nAug 17, 2023\n\n\nEitan Turok, Harlow Malloc\n\n\n\n\n\n\n  \n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nAug 15, 2023\n\n\nEitan Turok, Eitan Turok\n\n\n\n\n\n\nNo matching items"
+  }
+]
