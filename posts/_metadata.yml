@@ -14,7 +14,12 @@ comments:
     repo:  ez2rok/BlogComments
 
 # Author name of all blog posts
-author: 'Eitan Turok'
+# author: 'Eitan Turok'
+
+# Default author
+author:
+  - name: Eitan Turok
+    url: https://ez2rok.github.io/blog/about.html
 
 # Table of content settings
 toc: true
@@ -29,3 +34,10 @@ format:
     code-line-numbers: true
   ipynb: default
   pdf: default
+
+# add license under creative commons so that anyone can use my work for free,
+# even for commercial purposes
+license: "CC BY"
+
+# create citation at the end of each blog post
+citation: true
