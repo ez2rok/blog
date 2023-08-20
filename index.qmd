@@ -1,5 +1,7 @@
 ---
 title: "Algorithmic Mutterings"
+sidebar: false
+toc: true
 listing:
   contents: posts
   sort: "date desc"
@@ -9,11 +11,23 @@ listing:
   filter-ui: false
 page-layout: full
 title-block-banner: true
+format:
+  html:
+    anchor-sections: true
 ---
 
+::: {layout="[79, 21]"}
 
-Hello! I'm Eitan Turok. I like building things. And I am an obsessive learner.
 
+Hello 👋! I'm Eitan Turok. I like building things. And I am an obsessive learner 📚. 
+<br>
+<br>
 I am majoring in CS and Applied Mathematics at Columbia University. I am generally interested in deep learning (efficient training, geometric DL, interpretability) and theoretical CS (fine-grained complexity, graph algorithms).
-
+<br>
+<br>
 I do research under [Prof Itsik Pe’er](https://www.engineering.columbia.edu/faculty/itsik-peer) predicting diseases from the microbiome with non-Eculdidean embeddings. I also do research under [Prof Josh Alman](https://joshalman.com/) on the fine-grained complexity of dynamic programming problems.
+
+![](profile_pic.png)
+:::
+
+# Blog Posts
