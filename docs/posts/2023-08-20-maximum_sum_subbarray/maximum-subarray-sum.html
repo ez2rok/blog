@@ -8,7 +8,7 @@
 
 <meta name="author" content="Eitan Turok">
 <meta name="dcterms.date" content="2023-08-20">
-<meta name="description" content="Five algorithms to solve the maximum sum subarray problem.">
+<meta name="description" content="Five algorithms to solve the maximum sum subarray problem. Each with a different algorithmic technique.">
 
 <title>blog - Different Perspectives on the The Maximum Sum Subarray Problem</title>
 <style>
@@ -148,7 +148,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <h1 class="title">Different Perspectives on the The Maximum Sum Subarray Problem</h1>
                   <div>
         <div class="description">
-          Five algorithms to solve the maximum sum subarray problem.
+          Five algorithms to solve the maximum sum subarray problem. Each with a different algorithmic technique.
         </div>
       </div>
                           <div class="quarto-categories">
@@ -203,7 +203,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#timing-maximum-subarray-algorithms" id="toc-timing-maximum-subarray-algorithms" class="nav-link" data-scroll-target="#timing-maximum-subarray-algorithms">Timing Maximum Subarray Algorithms</a></li>
   <li><a href="#works-cited" id="toc-works-cited" class="nav-link" data-scroll-target="#works-cited">Works Cited</a></li>
   </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="2023-08-20-maximum-subarray-sum.out.ipynb" download="2023-08-20-maximum-subarray-sum.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li><li><a href="2023-08-20-maximum-subarray-sum.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="maximum-subarray-sum.out.ipynb" download="maximum-subarray-sum.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li><li><a href="maximum-subarray-sum.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
@@ -537,7 +537,7 @@ Two different perspectives. <a href="https://www.lifehack.org/868287/perspective
 <p>Below I run the five different maximum subarray algorithms and time their runtime on inputs of different sizes. Every element of the input array is randomly (uniformly) choosen from the interval <span class="math inline">\([-100, 100]\)</span>.</p>
 <div class="cell" data-outputid="948a05ed-1015-413b-ce40-feaae326a17c">
 <div class="cell-output cell-output-display">
-<p><img src="2023-08-20-maximum-subarray-sum_files/figure-html/cell-17-output-1.png" class="img-fluid"></p>
+<p><img src="maximum-subarray-sum_files/figure-html/cell-17-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <p>Note that, as expected, the <span class="math inline">\(O(n^2)\)</span> brute force algorithm is the slowest, the <span class="math inline">\(O(n log n)\)</span> divide and conquer algorithm is the second slowest, and the <span class="math inline">\(O(n)\)</span> sliding window algorithm, (non-constant space) dynamic programming algorithm, and Kadane’s algorithm are the fastest. This emperically confirms what we showed via theory.</p>
