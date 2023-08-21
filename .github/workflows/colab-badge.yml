@@ -6,16 +6,18 @@ name: Add Colab Badges
 on:
   push:
     paths:
-      # Trigger workflow only for notebooks. md, or or qmd file changes
+      # Trigger workflow only for notebooks. md, qmd, or .yml file changes
       - "**.ipynb"
       - "**.md"
       - "**.qmd"
+      - "**.yml"
   pull_request:
     paths:
       # The same for PR
       - "**.ipynb"
       - "**.md"
       - "**.qmd"
+      - "**.yml"
 
 jobs:
   badges:
