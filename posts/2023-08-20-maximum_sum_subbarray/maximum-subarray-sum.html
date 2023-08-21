@@ -361,7 +361,10 @@ Two different perspectives. <a href="https://www.lifehack.org/868287/perspective
 </section>
 <section id="dynamic-programming" class="level1">
 <h1>Dynamic Programming</h1>
-<p><strong>Idea:</strong> If we already know the largest sum in <code>nums[0:i]</code>, then the largest sum in <code>nums[0:i+1]</code> is <code>nums[0:i] + nums[i]</code> if <code>nums[0:i]</code> is positive. If <code>nums[0:i]</code> is negative, adding it to <code>nums[i]</code> would just make it smaller, so the largest sum in <code>nums[0:i+1]</code> is just <code>nums[i]</code>. This idea naturally lends itself to dynamic programming. In particular, this problem has the recurrence:</p>
+<p><strong>Idea:</strong> Let’s see if we can formulate this problem in terms of a previously computed solution using a dynamic programming table <code>dp</code>. Assume we already know the maximum subarray sum in <code>nums[:i]</code> and have stored this value in <code>dp[i-1]</code>. Then how can we compute <code>dp[i]</code>, the maximum subarray sum in <code>nums[:i+1]</code>?</p>
+<p>If <code>nums[i]</code> is positive, adding it to the maximum sum subarray of <code>nums[:i]</code> would make the sum strictly larger. Thus <code>dp[i] = dp[i-1] + nums[i]</code>.</p>
+<p>If <code>nums[i]</code> is negative, adding it to the maximum sum subarray of <code>nums[:i]</code> would make the sum smaller. So the maximum sum subarray of <code>nums[:i+1]</code> would just be the previous maximum sum subarray, <code>dp[i-1]</code>. Thus <code>dp[i] = dp[i-1]</code></p>
+<p>This idea naturally lends itself to a dynamic programming recurrence relation:</p>
 <p><span class="math display">\[\begin{align*}
   dp[i]
   &amp;=
@@ -373,7 +376,7 @@ Two different perspectives. <a href="https://www.lifehack.org/868287/perspective
     nums[i] &amp; \text{else}
   \end{cases}
 \end{align*}\]</span></p>
-<p>where <span class="math inline">\(dp[i]\)</span> is the maximum sum obtained from contigious subarrays in the first <span class="math inline">\(i\)</span> elements of <code>nums</code>. This recurrence relation can be written more succinctly as</p>
+<p>where <code>dp[i]</code> is the maximum sum obtained from contiguous subarrays of <code>nums[:i+1]</code>, the first <code>i</code> elements of <code>nums</code>. This recurrence relation can be written more succinctly as</p>
 <p><span class="math display">\[\begin{align*}
   dp[i]
   &amp;=
@@ -384,7 +387,7 @@ Two different perspectives. <a href="https://www.lifehack.org/868287/perspective
   \end{cases}
 \end{align*}\]</span></p>
 <p>We will implement a bottom-up solution to this dynamic programming problem, meaning we compute the maximum sum in the first element of <code>nums</code>, the first two elements of <code>nums</code>, the first three elements of <code>nums</code>, etc. At each iteration, we compute the maximum sum seen so far.</p>
-<p>To compute the maximum subarray sum, simply compute <span class="math inline">\(dp[len(nums)-1]\)</span>.</p>
+<p>To compute the maximum subarray sum, simply compute and return <span class="math inline">\(dp[len(nums)-1]\)</span>.</p>
 <p><strong>Time Complexity:</strong> <span class="math inline">\(O(n)\)</span></p>
 <p>It takes constant time to compute a single entry in the table <span class="math inline">\(dp\)</span>. And because there are <span class="math inline">\(n\)</span> entries in the table, it will take <span class="math inline">\(O(n)\)</span> time to fill in the entire table.</p>
 <p><strong>Space Complexity:</strong> <span class="math inline">\(O(n)\)</span></p>
@@ -394,7 +397,7 @@ Two different perspectives. <a href="https://www.lifehack.org/868287/perspective
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">def</span> max_subarray_dp(nums):</span>
 <span id="cb5-2"><a href="#cb5-2"></a>  <span class="co">"""Compute the maximum subarray with a dynamic programming technique."""</span></span>
 <span id="cb5-3"><a href="#cb5-3"></a></span>
-<span id="cb5-4"><a href="#cb5-4"></a>  dp <span class="op">=</span> [<span class="dv">0</span>] <span class="op">*</span> (<span class="bu">len</span>(nums))</span>
+<span id="cb5-4"><a href="#cb5-4"></a>  dp <span class="op">=</span> [<span class="dv">0</span>] <span class="op">*</span> <span class="bu">len</span>(nums)</span>
 <span id="cb5-5"><a href="#cb5-5"></a>  dp[<span class="dv">0</span>] <span class="op">=</span> max_sum <span class="op">=</span> nums[<span class="dv">0</span>]</span>
 <span id="cb5-6"><a href="#cb5-6"></a></span>
 <span id="cb5-7"><a href="#cb5-7"></a>  <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="bu">len</span>(nums)):</span>
@@ -416,9 +419,9 @@ Two different perspectives. <a href="https://www.lifehack.org/868287/perspective
 \end{align*}\]</span> A closer analysis reveals that to compute <span class="math inline">\(dp[i]\)</span>, we only need <span class="math inline">\(dp[i-1]\)</span>. We don’t need any of the other previous entries of <span class="math inline">\(dp\)</span>. This means we do not to store the entire <span class="math inline">\(dp\)</span> table (which takes <span class="math inline">\(O(n)\)</span> space) and instead can store just <span class="math inline">\(dp[i-1]\)</span> as <code>current_sum</code>. This is Kadane’s algorithm.</p>
 <p>Again, to compute the maximum subarray sum, simply compute <span class="math inline">\(dp[len(nums)-1]\)</span>.</p>
 <p><strong>Time Complexity:</strong> <span class="math inline">\(O(n)\)</span></p>
-<p>We must compute <span class="math inline">\(n\)</span> different values of <span class="math inline">\(dp\)</span>.</p>
+<p>Same runtime as the dynamic programming algorithm we just saw. It is <span class="math inline">\(O(n)\)</span> because we must compute <span class="math inline">\(n\)</span> different values of <span class="math inline">\(dp\)</span>.</p>
 <p><strong>Space Complexity:</strong> <span class="math inline">\(O(1)\)</span></p>
-<p>We only store only the previous sum to compute the current sum.</p>
+<p>We do not need to store an entire <span class="math inline">\(O(n)\)</span> length dynamic programming table anymore. Instead, we only store only the current sum to compute the new max sum.</p>
 <p><strong>The Algorithm:</strong></p>
 <div class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw">def</span> max_subarray_kadane(nums):</span>
@@ -433,7 +436,8 @@ Two different perspectives. <a href="https://www.lifehack.org/868287/perspective
 </section>
 <section id="sliding-window" class="level1">
 <h1>Sliding Window</h1>
-<p><strong>Idea:</strong> Use two pointers <code>low</code> and <code>high</code> to maintain a sliding window across the array. At every iteration, move <code>high</code> one to right and add the new element to the running sum <code>sum_</code>. If the sum is less than the new element <code>nums[high]</code>, then we would get a higher sum just by starting our sum from <code>nums[high]</code>. So we want to keep on moving the left pointer until <code>sum_ &lt; nums[high]</code> is no longer true; this is expressed with a while loop. (A closer look reveals that if we ever have <code>sum_ &lt; nums[high]</code> and wish to start our sum from <code>nums[high]</code>, we can immediately move the left pointer to <code>nums[high]</code> if <code>sum_ &lt; nums[high]</code>, no need for a while loop; this optimized version is commented out. Also, at every iteration we record the maximum sum so once we’re done iterating through the array, we can just return the maximum sum.</p>
+<p><strong>Idea:</strong> Instead of formulating a recursive solution via divide and conquer / dynamic programming, let’s think about the problem a bit differently: using pointers.</p>
+<p>Use two pointers <code>low</code> and <code>high</code> to maintain a sliding window across the array. At every iteration, move <code>high</code> one to right and add the new element to the running sum <code>sum_</code>. If the sum is less than the new element <code>nums[high]</code>, then we would get a higher sum just by starting our sum from <code>nums[high]</code>. So we want to keep on moving the left pointer until <code>sum_ &lt; nums[high]</code> is no longer true; this is expressed with a while loop. (A closer look reveals that if we ever have <code>sum_ &lt; nums[high]</code> and wish to start our sum from <code>nums[high]</code>, we can immediately move the left pointer to <code>nums[high]</code> if <code>sum_ &lt; nums[high]</code>, no need for a while loop; this optimized version is commented out. Also, at every iteration we record the maximum sum so once we’re done iterating through the array, we can just return the maximum sum.</p>
 <p><strong>Time Complexity:</strong> <span class="math inline">\(O(n)\)</span></p>
 <p>We iterate through the entire array once by moving two pointers.</p>
 <p><strong>Space Complexity:</strong> <span class="math inline">\(O(1)\)</span></p>
