@@ -12,10 +12,6 @@ title-block-banner: true
 comments: 
   giscus:
     repo: ez2rok/BlogComments
-    loading: lazy
-
-# Author name of all blog posts
-# author: 'Eitan Turok'
 
 # Default author
 author:
