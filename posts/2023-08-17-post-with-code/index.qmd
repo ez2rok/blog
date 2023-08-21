@@ -1,6 +1,8 @@
 ---
 title: Quarto Computations
 jupyter: python3
+
+date: "2023-08-17"
 ---
 
 
