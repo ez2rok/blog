@@ -6,6 +6,10 @@ date-modified: "2023-08-17"
 categories: [news]
 ---
 
+
+{{ badge }}
+
+
 This is the first post in my Quarto blog. Welcome!
 
 ![](thumbnail.jpg)
