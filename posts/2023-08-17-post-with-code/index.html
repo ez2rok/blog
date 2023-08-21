@@ -597,53 +597,54 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb5-5"><a href="#cb5-5"></a><span class="an">date:</span><span class="co"> "2023-08-17"</span></span>
 <span id="cb5-6"><a href="#cb5-6"></a><span class="co">---</span></span>
 <span id="cb5-7"><a href="#cb5-7"></a></span>
-<span id="cb5-8"><a href="#cb5-8"></a></span>
+<span id="cb5-8"><a href="#cb5-8"></a>{{ badge }}</span>
 <span id="cb5-9"><a href="#cb5-9"></a></span>
-<span id="cb5-10"><a href="#cb5-10"></a><span class="fu">## NumPy</span></span>
-<span id="cb5-11"><a href="#cb5-11"></a></span>
-<span id="cb5-14"><a href="#cb5-14"></a><span class="in">```{python}</span></span>
-<span id="cb5-15"><a href="#cb5-15"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb5-16"><a href="#cb5-16"></a>a <span class="op">=</span> np.arange(<span class="dv">15</span>).reshape(<span class="dv">3</span>, <span class="dv">5</span>)</span>
-<span id="cb5-17"><a href="#cb5-17"></a>a</span>
-<span id="cb5-18"><a href="#cb5-18"></a><span class="in">```</span></span>
-<span id="cb5-19"><a href="#cb5-19"></a></span>
-<span id="cb5-20"><a href="#cb5-20"></a><span class="fu">## Matplotlib</span></span>
-<span id="cb5-21"><a href="#cb5-21"></a></span>
-<span id="cb5-24"><a href="#cb5-24"></a><span class="in">```{python}</span></span>
-<span id="cb5-25"><a href="#cb5-25"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb5-26"><a href="#cb5-26"></a></span>
-<span id="cb5-27"><a href="#cb5-27"></a>fig <span class="op">=</span> plt.figure()</span>
-<span id="cb5-28"><a href="#cb5-28"></a>x <span class="op">=</span> np.arange(<span class="dv">10</span>)</span>
-<span id="cb5-29"><a href="#cb5-29"></a>y <span class="op">=</span> <span class="fl">2.5</span> <span class="op">*</span> np.sin(x <span class="op">/</span> <span class="dv">20</span> <span class="op">*</span> np.pi)</span>
-<span id="cb5-30"><a href="#cb5-30"></a>yerr <span class="op">=</span> np.linspace(<span class="fl">0.05</span>, <span class="fl">0.2</span>, <span class="dv">10</span>)</span>
-<span id="cb5-31"><a href="#cb5-31"></a></span>
-<span id="cb5-32"><a href="#cb5-32"></a>plt.errorbar(x, y <span class="op">+</span> <span class="dv">3</span>, yerr<span class="op">=</span>yerr, label<span class="op">=</span><span class="st">'both limits (default)'</span>)</span>
-<span id="cb5-33"><a href="#cb5-33"></a>plt.errorbar(x, y <span class="op">+</span> <span class="dv">2</span>, yerr<span class="op">=</span>yerr, uplims<span class="op">=</span><span class="va">True</span>, label<span class="op">=</span><span class="st">'uplims=True'</span>)</span>
-<span id="cb5-34"><a href="#cb5-34"></a>plt.errorbar(x, y <span class="op">+</span> <span class="dv">1</span>, yerr<span class="op">=</span>yerr, uplims<span class="op">=</span><span class="va">True</span>, lolims<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb5-35"><a href="#cb5-35"></a>             label<span class="op">=</span><span class="st">'uplims=True, lolims=True'</span>)</span>
-<span id="cb5-36"><a href="#cb5-36"></a></span>
-<span id="cb5-37"><a href="#cb5-37"></a>upperlimits <span class="op">=</span> [<span class="va">True</span>, <span class="va">False</span>] <span class="op">*</span> <span class="dv">5</span></span>
-<span id="cb5-38"><a href="#cb5-38"></a>lowerlimits <span class="op">=</span> [<span class="va">False</span>, <span class="va">True</span>] <span class="op">*</span> <span class="dv">5</span></span>
-<span id="cb5-39"><a href="#cb5-39"></a>plt.errorbar(x, y, yerr<span class="op">=</span>yerr, uplims<span class="op">=</span>upperlimits, lolims<span class="op">=</span>lowerlimits,</span>
-<span id="cb5-40"><a href="#cb5-40"></a>             label<span class="op">=</span><span class="st">'subsets of uplims and lolims'</span>)</span>
-<span id="cb5-41"><a href="#cb5-41"></a></span>
-<span id="cb5-42"><a href="#cb5-42"></a>plt.legend(loc<span class="op">=</span><span class="st">'lower right'</span>)</span>
-<span id="cb5-43"><a href="#cb5-43"></a>plt.show(fig)</span>
-<span id="cb5-44"><a href="#cb5-44"></a><span class="in">```</span></span>
-<span id="cb5-45"><a href="#cb5-45"></a></span>
-<span id="cb5-46"><a href="#cb5-46"></a><span class="fu">## Plotly</span></span>
-<span id="cb5-47"><a href="#cb5-47"></a></span>
-<span id="cb5-50"><a href="#cb5-50"></a><span class="in">```{python}</span></span>
-<span id="cb5-51"><a href="#cb5-51"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
-<span id="cb5-52"><a href="#cb5-52"></a><span class="im">import</span> plotly.io <span class="im">as</span> pio</span>
-<span id="cb5-53"><a href="#cb5-53"></a>gapminder <span class="op">=</span> px.data.gapminder()</span>
-<span id="cb5-54"><a href="#cb5-54"></a>gapminder2007 <span class="op">=</span> gapminder.query(<span class="st">"year == 2007"</span>)</span>
-<span id="cb5-55"><a href="#cb5-55"></a>fig <span class="op">=</span> px.scatter(gapminder2007, </span>
-<span id="cb5-56"><a href="#cb5-56"></a>                 x<span class="op">=</span><span class="st">"gdpPercap"</span>, y<span class="op">=</span><span class="st">"lifeExp"</span>, color<span class="op">=</span><span class="st">"continent"</span>, </span>
-<span id="cb5-57"><a href="#cb5-57"></a>                 size<span class="op">=</span><span class="st">"pop"</span>, size_max<span class="op">=</span><span class="dv">60</span>,</span>
-<span id="cb5-58"><a href="#cb5-58"></a>                 hover_name<span class="op">=</span><span class="st">"country"</span>)</span>
-<span id="cb5-59"><a href="#cb5-59"></a>fig.show()</span>
-<span id="cb5-60"><a href="#cb5-60"></a><span class="in">```</span></span>
+<span id="cb5-10"><a href="#cb5-10"></a></span>
+<span id="cb5-11"><a href="#cb5-11"></a><span class="fu">## NumPy</span></span>
+<span id="cb5-12"><a href="#cb5-12"></a></span>
+<span id="cb5-15"><a href="#cb5-15"></a><span class="in">```{python}</span></span>
+<span id="cb5-16"><a href="#cb5-16"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb5-17"><a href="#cb5-17"></a>a <span class="op">=</span> np.arange(<span class="dv">15</span>).reshape(<span class="dv">3</span>, <span class="dv">5</span>)</span>
+<span id="cb5-18"><a href="#cb5-18"></a>a</span>
+<span id="cb5-19"><a href="#cb5-19"></a><span class="in">```</span></span>
+<span id="cb5-20"><a href="#cb5-20"></a></span>
+<span id="cb5-21"><a href="#cb5-21"></a><span class="fu">## Matplotlib</span></span>
+<span id="cb5-22"><a href="#cb5-22"></a></span>
+<span id="cb5-25"><a href="#cb5-25"></a><span class="in">```{python}</span></span>
+<span id="cb5-26"><a href="#cb5-26"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb5-27"><a href="#cb5-27"></a></span>
+<span id="cb5-28"><a href="#cb5-28"></a>fig <span class="op">=</span> plt.figure()</span>
+<span id="cb5-29"><a href="#cb5-29"></a>x <span class="op">=</span> np.arange(<span class="dv">10</span>)</span>
+<span id="cb5-30"><a href="#cb5-30"></a>y <span class="op">=</span> <span class="fl">2.5</span> <span class="op">*</span> np.sin(x <span class="op">/</span> <span class="dv">20</span> <span class="op">*</span> np.pi)</span>
+<span id="cb5-31"><a href="#cb5-31"></a>yerr <span class="op">=</span> np.linspace(<span class="fl">0.05</span>, <span class="fl">0.2</span>, <span class="dv">10</span>)</span>
+<span id="cb5-32"><a href="#cb5-32"></a></span>
+<span id="cb5-33"><a href="#cb5-33"></a>plt.errorbar(x, y <span class="op">+</span> <span class="dv">3</span>, yerr<span class="op">=</span>yerr, label<span class="op">=</span><span class="st">'both limits (default)'</span>)</span>
+<span id="cb5-34"><a href="#cb5-34"></a>plt.errorbar(x, y <span class="op">+</span> <span class="dv">2</span>, yerr<span class="op">=</span>yerr, uplims<span class="op">=</span><span class="va">True</span>, label<span class="op">=</span><span class="st">'uplims=True'</span>)</span>
+<span id="cb5-35"><a href="#cb5-35"></a>plt.errorbar(x, y <span class="op">+</span> <span class="dv">1</span>, yerr<span class="op">=</span>yerr, uplims<span class="op">=</span><span class="va">True</span>, lolims<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb5-36"><a href="#cb5-36"></a>             label<span class="op">=</span><span class="st">'uplims=True, lolims=True'</span>)</span>
+<span id="cb5-37"><a href="#cb5-37"></a></span>
+<span id="cb5-38"><a href="#cb5-38"></a>upperlimits <span class="op">=</span> [<span class="va">True</span>, <span class="va">False</span>] <span class="op">*</span> <span class="dv">5</span></span>
+<span id="cb5-39"><a href="#cb5-39"></a>lowerlimits <span class="op">=</span> [<span class="va">False</span>, <span class="va">True</span>] <span class="op">*</span> <span class="dv">5</span></span>
+<span id="cb5-40"><a href="#cb5-40"></a>plt.errorbar(x, y, yerr<span class="op">=</span>yerr, uplims<span class="op">=</span>upperlimits, lolims<span class="op">=</span>lowerlimits,</span>
+<span id="cb5-41"><a href="#cb5-41"></a>             label<span class="op">=</span><span class="st">'subsets of uplims and lolims'</span>)</span>
+<span id="cb5-42"><a href="#cb5-42"></a></span>
+<span id="cb5-43"><a href="#cb5-43"></a>plt.legend(loc<span class="op">=</span><span class="st">'lower right'</span>)</span>
+<span id="cb5-44"><a href="#cb5-44"></a>plt.show(fig)</span>
+<span id="cb5-45"><a href="#cb5-45"></a><span class="in">```</span></span>
+<span id="cb5-46"><a href="#cb5-46"></a></span>
+<span id="cb5-47"><a href="#cb5-47"></a><span class="fu">## Plotly</span></span>
+<span id="cb5-48"><a href="#cb5-48"></a></span>
+<span id="cb5-51"><a href="#cb5-51"></a><span class="in">```{python}</span></span>
+<span id="cb5-52"><a href="#cb5-52"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
+<span id="cb5-53"><a href="#cb5-53"></a><span class="im">import</span> plotly.io <span class="im">as</span> pio</span>
+<span id="cb5-54"><a href="#cb5-54"></a>gapminder <span class="op">=</span> px.data.gapminder()</span>
+<span id="cb5-55"><a href="#cb5-55"></a>gapminder2007 <span class="op">=</span> gapminder.query(<span class="st">"year == 2007"</span>)</span>
+<span id="cb5-56"><a href="#cb5-56"></a>fig <span class="op">=</span> px.scatter(gapminder2007, </span>
+<span id="cb5-57"><a href="#cb5-57"></a>                 x<span class="op">=</span><span class="st">"gdpPercap"</span>, y<span class="op">=</span><span class="st">"lifeExp"</span>, color<span class="op">=</span><span class="st">"continent"</span>, </span>
+<span id="cb5-58"><a href="#cb5-58"></a>                 size<span class="op">=</span><span class="st">"pop"</span>, size_max<span class="op">=</span><span class="dv">60</span>,</span>
+<span id="cb5-59"><a href="#cb5-59"></a>                 hover_name<span class="op">=</span><span class="st">"country"</span>)</span>
+<span id="cb5-60"><a href="#cb5-60"></a>fig.show()</span>
+<span id="cb5-61"><a href="#cb5-61"></a><span class="in">```</span></span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
