@@ -203,7 +203,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#timing-maximum-subarray-algorithms" id="toc-timing-maximum-subarray-algorithms" class="nav-link" data-scroll-target="#timing-maximum-subarray-algorithms">Timing Maximum Subarray Algorithms</a></li>
   <li><a href="#works-cited" id="toc-works-cited" class="nav-link" data-scroll-target="#works-cited">Works Cited</a></li>
   </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="maximum-subarray-sum.out.ipynb" download="maximum-subarray-sum.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li><li><a href="maximum-subarray-sum.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="maximum-subarray-sum.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
@@ -247,7 +247,7 @@ Two different perspectives. <a href="https://www.lifehack.org/868287/perspective
 <p><strong>Space Complexity:</strong> <span class="math inline">\(O(1)\)</span></p>
 <p>We don’t store anything except for the maximum sum seen so far.</p>
 <p><strong>The Algorithm:</strong></p>
-<div class="cell" data-execution_count="23">
+<div class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">def</span> max_subarray_brute_force(nums):</span>
 <span id="cb1-2"><a href="#cb1-2"></a>  <span class="co">"""Compute the maximum subarray with a brute force technique."""</span></span>
 <span id="cb1-3"><a href="#cb1-3"></a></span>
@@ -258,7 +258,6 @@ Two different perspectives. <a href="https://www.lifehack.org/868287/perspective
 <span id="cb1-8"><a href="#cb1-8"></a>      max_sum <span class="op">=</span> <span class="bu">max</span>(max_sum, new_sum)</span>
 <span id="cb1-9"><a href="#cb1-9"></a>  <span class="cf">return</span> max_sum</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><strong>Testing:</strong> Test that this algorithm computes the correct values with the code below.</p>
 </section>
 <section id="divide-and-conquer" class="level1">
 <h1>Divide And Conquer</h1>
@@ -306,7 +305,7 @@ Two different perspectives. <a href="https://www.lifehack.org/868287/perspective
 <p><strong>Space Complexity:</strong> <span class="math inline">\(O(1)\)</span></p>
 <p>We only store constants like <code>low</code>, <code>high</code>, <code>left_low</code>, <code>left_high</code>, <code>left_sum</code>, etc. Note: this space complexity does not take into account the <span class="math inline">\(O(log n)\)</span> space used by the recursive stack.</p>
 <p><strong>The Algorithm:</strong></p>
-<div class="cell" data-execution_count="10">
+<div class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">def</span> max_crossing_subarray(low, mid, high, nums):</span>
 <span id="cb2-2"><a href="#cb2-2"></a>  <span class="co">"""Compute the maximum subarray that crosses the midpoint."""</span></span>
 <span id="cb2-3"><a href="#cb2-3"></a>    </span>
@@ -330,7 +329,7 @@ Two different perspectives. <a href="https://www.lifehack.org/868287/perspective
 <span id="cb2-21"><a href="#cb2-21"></a>  </span>
 <span id="cb2-22"><a href="#cb2-22"></a>  <span class="cf">return</span> (max_left, max_right, left_sum <span class="op">+</span> right_sum)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="8">
+<div class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">def</span> max_subarray_helper(low, high, nums):</span>
 <span id="cb3-2"><a href="#cb3-2"></a>  <span class="co">"""Find the maximum subarray in nums[low, ..., high]."""</span></span>
 <span id="cb3-3"><a href="#cb3-3"></a></span>
@@ -349,7 +348,7 @@ Two different perspectives. <a href="https://www.lifehack.org/868287/perspective
 <span id="cb3-16"><a href="#cb3-16"></a>    <span class="cf">return</span> right_low, right_high, right_sum</span>
 <span id="cb3-17"><a href="#cb3-17"></a>  <span class="cf">return</span> cross_low, cross_high, cross_sum</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="9">
+<div class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">def</span> max_subarray_div_and_conq(nums):  </span>
 <span id="cb4-2"><a href="#cb4-2"></a>  <span class="co">"""Compute the maximum subarray with a divide and conquer technique."""</span></span>
 <span id="cb4-3"><a href="#cb4-3"></a>  </span>
@@ -389,7 +388,7 @@ Two different perspectives. <a href="https://www.lifehack.org/868287/perspective
 <p><strong>Space Complexity:</strong> <span class="math inline">\(O(n)\)</span></p>
 <p>The table has <span class="math inline">\(n\)</span> entries so this algorithim take <span class="math inline">\(O(n)\)</span> space.</p>
 <p><strong>The Algorithm:</strong></p>
-<div class="cell">
+<div class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">def</span> max_subarray_dp(nums):</span>
 <span id="cb5-2"><a href="#cb5-2"></a>  <span class="co">"""compute the maximum subarray with a dynamic programming technique"""</span></span>
 <span id="cb5-3"><a href="#cb5-3"></a></span>
@@ -419,7 +418,7 @@ Two different perspectives. <a href="https://www.lifehack.org/868287/perspective
 <p><strong>Space Complexity:</strong> <span class="math inline">\(O(1)\)</span></p>
 <p>We only store only the previous sum to compute the current sum.</p>
 <p><strong>The Algorithm:</strong></p>
-<div class="cell">
+<div class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw">def</span> max_subarray_kadane(nums):</span>
 <span id="cb6-2"><a href="#cb6-2"></a>  <span class="co">"""compute the maximum subarray with the Kadane's algorithm technique"""</span></span>
 <span id="cb6-3"><a href="#cb6-3"></a>  </span>
@@ -438,7 +437,7 @@ Two different perspectives. <a href="https://www.lifehack.org/868287/perspective
 <p><strong>Space Complexity:</strong> <span class="math inline">\(O(1)\)</span></p>
 <p>Trivial.</p>
 <p><strong>The Algorithm:</strong></p>
-<div class="cell">
+<div class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="kw">def</span> max_subarray_sliding_window(nums):</span>
 <span id="cb7-2"><a href="#cb7-2"></a>  <span class="co">"""compute the maximum subarray with a sliding window technique"""</span></span>
 <span id="cb7-3"><a href="#cb7-3"></a></span>
@@ -537,7 +536,7 @@ Two different perspectives. <a href="https://www.lifehack.org/868287/perspective
 <p>Below I run the five different maximum subarray algorithms and time their runtime on inputs of different sizes. Every element of the input array is randomly (uniformly) choosen from the interval <span class="math inline">\([-100, 100]\)</span>.</p>
 <div class="cell" data-outputid="948a05ed-1015-413b-ce40-feaae326a17c">
 <div class="cell-output cell-output-display">
-<p><img src="maximum-subarray-sum_files/figure-html/cell-17-output-1.png" class="img-fluid"></p>
+<p><img src="maximum-subarray-sum_files/figure-html/cell-21-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <p>Note that, as expected, the <span class="math inline">\(O(n^2)\)</span> brute force algorithm is the slowest, the <span class="math inline">\(O(n log n)\)</span> divide and conquer algorithm is the second slowest, and the <span class="math inline">\(O(n)\)</span> sliding window algorithm, (non-constant space) dynamic programming algorithm, and Kadane’s algorithm are the fastest. This emperically confirms what we showed via theory.</p>
@@ -849,7 +848,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<script src="https://utteranc.es/client.js" repo="ez2rok/BlogComments" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
+<script src="https://giscus.app/client.js" data-repo="ez2rok/BlogComments" data-repo-id="R_kgDOKJcr1A" data-category="General" data-category-id="" data-mapping="title" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" data-loading="lazy" async="">
 </script>
 </div> <!-- /content -->
 
