@@ -1,1 +1,1 @@
-Sitemap: https://ez2rok.github.io/blog/sitemap.xml
+Sitemap: https://github.com/ez2rok/blog/sitemap.xml
