@@ -1,0 +1,10 @@
+{
+  "hash": "b3faf11d1bfe29e26cb4068516e21a8c",
+  "result": {
+    "markdown": "---\ntitle: Quarto Computations\n---\n\n## NumPy\n\n::: {.cell execution_count=1}\n``` {.python .cell-code}\nimport numpy as np\na = np.arange(15).reshape(3, 5)\na\n```\n\n::: {.cell-output .cell-output-display execution_count=4}\n```\narray([[ 0,  1,  2,  3,  4],\n       [ 5,  6,  7,  8,  9],\n       [10, 11, 12, 13, 14]])\n```\n:::\n:::\n\n\n## Matplotlib\n\n::: {.cell execution_count=2}\n``` {.python .cell-code}\nimport matplotlib.pyplot as plt\n\nfig = plt.figure()\nx = np.arange(10)\ny = 2.5 * np.sin(x / 20 * np.pi)\nyerr = np.linspace(0.05, 0.2, 10)\n\nplt.errorbar(x, y + 3, yerr=yerr, label='both limits (default)')\nplt.errorbar(x, y + 2, yerr=yerr, uplims=True, label='uplims=True')\nplt.errorbar(x, y + 1, yerr=yerr, uplims=True, lolims=True,\n             label='uplims=True, lolims=True')\n\nupperlimits = [True, False] * 5\nlowerlimits = [False, True] * 5\nplt.errorbar(x, y, yerr=yerr, uplims=upperlimits, lolims=lowerlimits,\n             label='subsets of uplims and lolims')\n\nplt.legend(loc='lower right')\nplt.show(fig)\n```\n\n::: {.cell-output .cell-output-display}\n![](index_files/figure-pdf/cell-3-output-1.pdf){fig-pos='H'}\n:::\n:::\n\n\n## Plotly\n\n::: {.cell execution_count=3}\n``` {.python .cell-code}\nimport plotly.express as px\nimport plotly.io as pio\ngapminder = px.data.gapminder()\ngapminder2007 = gapminder.query(\"year == 2007\")\nfig = px.scatter(gapminder2007, \n                 x=\"gdpPercap\", y=\"lifeExp\", color=\"continent\", \n                 size=\"pop\", size_max=60,\n                 hover_name=\"country\")\nfig.show()\n```\n\n::: {.cell-output .cell-output-display}\n```\nUnable to display output for mime type(s): text/html\n```\n:::\n\n::: {.cell-output .cell-output-display}\n```\nUnable to display output for mime type(s): text/html\n```\n:::\n:::\n\n\n",
+    "supporting": [
+      "index_files/figure-pdf"
+    ],
+    "filters": []
+  }
+}

@@ -7,11 +7,12 @@ freeze: true
 # Enable banner style title blocks
 title-block-banner: true
 
-# enable comments via utternaces
-# (see https://albert-rapp.de/posts/13_quarto_blog_writing_guide/13_quarto_blog_writing_guide.html#comment-sections)
+# enable comments via giscus
+# see https://giscus.app/
 comments: 
-  utterances: 
-    repo:  ez2rok/BlogComments
+  giscus:
+    repo: ez2rok/BlogComments
+    loading: lazy
 
 # Author name of all blog posts
 # author: 'Eitan Turok'
@@ -25,14 +26,15 @@ author:
 toc: true
 toc-depth: 3
 
-# include multiple formats
+# can include multiple formats; see https://quarto.org/docs/blog/posts/2023-03-15-multi-format/
+# but gets errors from rendering in two formats at once; see https://github.com/quarto-dev/quarto-cli/issues/4583
+# only use pdf format b/c can create ipynb via google colab badge
 # html: enable code line numbers, and code tools
 # ipynb: enable user to click on ipynb icon on right-hand side of page
 format: 
   html:
     code-tools: true
     code-line-numbers: true
-  ipynb: default
   pdf: default
 
 # add license under creative commons so that anyone can use my work for free,
