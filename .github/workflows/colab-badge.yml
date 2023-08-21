@@ -1,3 +1,7 @@
+# For reference, see:
+# https://github.com/marketplace/actions/colab-badge-action
+# https://dev.to/trsvchn/jupyter-co-github-action-for-colab-badges-generation-5d7p
+
 name: Add Colab Badges
 on:
   push:
