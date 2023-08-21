@@ -211,7 +211,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<p>{{ badge }}</p>
+<!--<badge>-->
+<p><a href="https://colab.research.google.com/github/ez2rok/blog/blob/main/posts/2023-08-20-maximum_sum_subbarray/maximum-subarray-sum.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a><!--</badge>--></p>
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
 <p>Today, we are going to solve the famous <a href="https://leetcode.com/problems/maximum-subarray/">maximum subarray problem</a>. The problem is stated as:</p>
@@ -391,7 +392,7 @@ Two different perspectives. <a href="https://www.lifehack.org/868287/perspective
 <p><strong>The Algorithm:</strong></p>
 <div class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">def</span> max_subarray_dp(nums):</span>
-<span id="cb5-2"><a href="#cb5-2"></a>  <span class="co">"""compute the maximum subarray with a dynamic programming technique"""</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a>  <span class="co">"""Compute the maximum subarray with a dynamic programming technique."""</span></span>
 <span id="cb5-3"><a href="#cb5-3"></a></span>
 <span id="cb5-4"><a href="#cb5-4"></a>  dp <span class="op">=</span> [<span class="dv">0</span>] <span class="op">*</span> (<span class="bu">len</span>(nums))</span>
 <span id="cb5-5"><a href="#cb5-5"></a>  dp[<span class="dv">0</span>] <span class="op">=</span> max_sum <span class="op">=</span> nums[<span class="dv">0</span>]</span>
@@ -421,7 +422,7 @@ Two different perspectives. <a href="https://www.lifehack.org/868287/perspective
 <p><strong>The Algorithm:</strong></p>
 <div class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw">def</span> max_subarray_kadane(nums):</span>
-<span id="cb6-2"><a href="#cb6-2"></a>  <span class="co">"""compute the maximum subarray with the Kadane's algorithm technique"""</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a>  <span class="co">"""Compute the maximum subarray with the Kadane's algorithm technique."""</span></span>
 <span id="cb6-3"><a href="#cb6-3"></a>  </span>
 <span id="cb6-4"><a href="#cb6-4"></a>  max_sum <span class="op">=</span> current_sum <span class="op">=</span> nums[<span class="dv">0</span>]</span>
 <span id="cb6-5"><a href="#cb6-5"></a>  <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="bu">len</span>(nums)):</span>
@@ -440,7 +441,7 @@ Two different perspectives. <a href="https://www.lifehack.org/868287/perspective
 <p><strong>The Algorithm:</strong></p>
 <div class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="kw">def</span> max_subarray_sliding_window(nums):</span>
-<span id="cb7-2"><a href="#cb7-2"></a>  <span class="co">"""compute the maximum subarray with a sliding window technique"""</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a>  <span class="co">"""Compute the maximum subarray with a sliding window technique."""</span></span>
 <span id="cb7-3"><a href="#cb7-3"></a></span>
 <span id="cb7-4"><a href="#cb7-4"></a>  low, sum_ <span class="op">=</span> <span class="dv">0</span>, <span class="dv">0</span></span>
 <span id="cb7-5"><a href="#cb7-5"></a>  max_sum <span class="op">=</span> <span class="op">-</span><span class="bu">float</span>(<span class="st">'inf'</span>)</span>
