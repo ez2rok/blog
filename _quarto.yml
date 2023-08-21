@@ -16,5 +16,7 @@ format:
     theme: cosmo
     css: styles.css
 
-
-
+# computational documents should only be re-rendered when source code changes
+# see: https://quarto.org/docs/projects/code-execution.html#freeze 
+execute:
+  freeze: auto 
