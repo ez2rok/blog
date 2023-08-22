@@ -437,34 +437,77 @@ Two different perspectives. <a href="https://www.lifehack.org/868287/perspective
 <section id="sliding-window" class="level1">
 <h1>Sliding Window</h1>
 <p><strong>Idea:</strong> Instead of formulating a recursive solution via divide and conquer / dynamic programming, let’s think about the problem a bit differently: using pointers.</p>
-<p>Use two pointers <code>low</code> and <code>high</code> to maintain a sliding window across the array. At every iteration, move <code>high</code> one to right and add the new element to the running sum <code>sum_</code>. If the sum is less than the new element <code>nums[high]</code>, then we would get a higher sum just by starting our sum from <code>nums[high]</code>. So we want to keep on moving the left pointer until <code>sum_ &lt; nums[high]</code> is no longer true; this is expressed with a while loop. (A closer look reveals that if we ever have <code>sum_ &lt; nums[high]</code> and wish to start our sum from <code>nums[high]</code>, we can immediately move the left pointer to <code>nums[high]</code> if <code>sum_ &lt; nums[high]</code>, no need for a while loop; this optimized version is commented out. Also, at every iteration we record the maximum sum so once we’re done iterating through the array, we can just return the maximum sum.</p>
+<p>Using two pointers <code>low</code> and <code>high</code>, we can maintain a sliding window across the array. At every iteration, we move <code>high</code> one to right and add the new element to the running sum <code>curr_sum</code>. If the current sum is less than the new element <code>nums[high]</code>, then we would get a higher sum just by starting our sum from <code>nums[high]</code>. So we want to keep on moving the left pointer until <code>curr_sum &lt; nums[high]</code> is no longer true; this is expressed with a while loop. Also, at every iteration we record the maximum sum so once we’re done iterating through the array, we can just return the maximum sum.</p>
 <p><strong>Time Complexity:</strong> <span class="math inline">\(O(n)\)</span></p>
 <p>We iterate through the entire array once by moving two pointers.</p>
 <p><strong>Space Complexity:</strong> <span class="math inline">\(O(1)\)</span></p>
 <p>Trivial.</p>
 <p><strong>The Algorithm:</strong></p>
-<div class="cell" data-execution_count="14">
+<div class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="kw">def</span> max_subarray_sliding_window(nums):</span>
 <span id="cb7-2"><a href="#cb7-2"></a>  <span class="co">"""Compute the maximum subarray with a sliding window technique."""</span></span>
 <span id="cb7-3"><a href="#cb7-3"></a></span>
-<span id="cb7-4"><a href="#cb7-4"></a>  low, sum_ <span class="op">=</span> <span class="dv">0</span>, <span class="dv">0</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a>  low, curr_sum <span class="op">=</span> <span class="dv">0</span>, <span class="dv">0</span></span>
 <span id="cb7-5"><a href="#cb7-5"></a>  max_sum <span class="op">=</span> <span class="op">-</span><span class="bu">float</span>(<span class="st">'inf'</span>)</span>
 <span id="cb7-6"><a href="#cb7-6"></a>  </span>
 <span id="cb7-7"><a href="#cb7-7"></a>  <span class="cf">for</span> high <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(nums)):</span>
-<span id="cb7-8"><a href="#cb7-8"></a>    sum_ <span class="op">+=</span> nums[high]</span>
+<span id="cb7-8"><a href="#cb7-8"></a>    curr_sum <span class="op">+=</span> nums[high]</span>
 <span id="cb7-9"><a href="#cb7-9"></a>    </span>
-<span id="cb7-10"><a href="#cb7-10"></a>    <span class="cf">while</span> sum_ <span class="op">&lt;</span> nums[high]:</span>
-<span id="cb7-11"><a href="#cb7-11"></a>      sum_ <span class="op">-=</span> nums[low]</span>
+<span id="cb7-10"><a href="#cb7-10"></a>    <span class="cf">while</span> curr_sum <span class="op">&lt;</span> nums[high]:</span>
+<span id="cb7-11"><a href="#cb7-11"></a>      curr_sum <span class="op">-=</span> nums[low]</span>
 <span id="cb7-12"><a href="#cb7-12"></a>      low <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb7-13"><a href="#cb7-13"></a></span>
-<span id="cb7-14"><a href="#cb7-14"></a>    <span class="co"># optimized version</span></span>
-<span id="cb7-15"><a href="#cb7-15"></a>    <span class="co"># if sum_ &lt; nums[high]:</span></span>
-<span id="cb7-16"><a href="#cb7-16"></a>    <span class="co">#   sum_ = nums[high]</span></span>
-<span id="cb7-17"><a href="#cb7-17"></a>    <span class="co">#   low = high</span></span>
-<span id="cb7-18"><a href="#cb7-18"></a>  </span>
-<span id="cb7-19"><a href="#cb7-19"></a>    max_sum <span class="op">=</span> <span class="bu">max</span>(max_sum, sum_)</span>
-<span id="cb7-20"><a href="#cb7-20"></a>  <span class="cf">return</span> max_sum</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-13"><a href="#cb7-13"></a>      </span>
+<span id="cb7-14"><a href="#cb7-14"></a>    max_sum <span class="op">=</span> <span class="bu">max</span>(max_sum, curr_sum)</span>
+<span id="cb7-15"><a href="#cb7-15"></a>    </span>
+<span id="cb7-16"><a href="#cb7-16"></a>  <span class="cf">return</span> max_sum</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="co"># def max_subarray_sliding_window(nums):</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="co">#   """Compute the maximum subarray with a sliding window technique."""</span></span>
+<span id="cb8-3"><a href="#cb8-3"></a></span>
+<span id="cb8-4"><a href="#cb8-4"></a><span class="co">#   low, curr_sum = 0, 0</span></span>
+<span id="cb8-5"><a href="#cb8-5"></a><span class="co">#   max_sum = -float('inf')</span></span>
+<span id="cb8-6"><a href="#cb8-6"></a>  </span>
+<span id="cb8-7"><a href="#cb8-7"></a><span class="co">#   for high in range(len(nums)):</span></span>
+<span id="cb8-8"><a href="#cb8-8"></a><span class="co">#     curr_sum += nums[high]</span></span>
+<span id="cb8-9"><a href="#cb8-9"></a></span>
+<span id="cb8-10"><a href="#cb8-10"></a><span class="co">#     if curr_sum &lt; nums[high]:</span></span>
+<span id="cb8-11"><a href="#cb8-11"></a><span class="co">#       curr_sum = nums[high]</span></span>
+<span id="cb8-12"><a href="#cb8-12"></a><span class="co">#       low = high</span></span>
+<span id="cb8-13"><a href="#cb8-13"></a>  </span>
+<span id="cb8-14"><a href="#cb8-14"></a><span class="co">#     max_sum = max(max_sum, curr_sum)</span></span>
+<span id="cb8-15"><a href="#cb8-15"></a><span class="co">#   return max_sum</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- # Sliding Window
+
+**Idea:** 
+Instead of formulating a recursive solution via divide and conquer / dynamic
+programming, let's think about the problem a bit differently: using pointers.
+
+Using two pointers `low` and `high`, we can maintain a sliding window across the
+array. At every iteration, we move `high` one to right and add the new element
+to the running sum `curr_sum`. If the current sum is less than the new element `nums[high]`,
+then we would get a higher sum just by starting our sum from `nums[high]`. So we
+can just then set `curr_sum = nums[high]` and move our left pointer there. Also, at every
+iteration we record the maximum sum so once we're done iterating through the
+array, we can just return the maximum sum.
+
+Looking at the code, we realize, we don't actually need the left pointer.
+
+**Time Complexity:** $O(n)$
+
+We iterate through the entire array once by moving two pointers.
+
+**Space Complexity:** $O(1)$
+
+Trivial.
+
+**The Algorithm:**
+
+(A closer look reveals that if we
+ever have `sum_ < nums[high]` and wish to start our sum from `nums[high]`, we
+can immediately move the left pointer to `nums[high]` if `sum_ < nums[high]`, no
+need for a while loop; this optimized version is commented out. -->
 </section>
 <section id="comparison" class="level1">
 <h1>Comparison</h1>
@@ -489,22 +532,24 @@ Two different perspectives. <a href="https://www.lifehack.org/868287/perspective
 <td><span class="math inline">\(O(1)\)</span></td>
 </tr>
 <tr class="odd">
-<td>Sliding Window</td>
-<td><span class="math inline">\(O(n)\)</span></td>
-<td><span class="math inline">\(O(1)\)</span></td>
-</tr>
-<tr class="even">
 <td>Dynamic Programming</td>
 <td><span class="math inline">\(O(n)\)</span></td>
 <td><span class="math inline">\(O(n)\)</span></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>Kadane’s Algorithm</td>
+<td><span class="math inline">\(O(n)\)</span></td>
+<td><span class="math inline">\(O(1)\)</span></td>
+</tr>
+<tr class="odd">
+<td>Sliding Window</td>
 <td><span class="math inline">\(O(n)\)</span></td>
 <td><span class="math inline">\(O(1)\)</span></td>
 </tr>
 </tbody>
 </table>
+<p>Note that Kadane’s algorithm and the sliding window method have the same runtime. Intuitively, Kadane’s algorithm says that .</p>
+<p>The core idea behind the sliding window technique is that we maintain a sliding window and running sum. If the sum is less than a new element, then we should move our leftmost pointer over and removing those left elements from the sum until then we can just start our sum would get a higher sum just by starting our sum from <code>nums[high]</code>. the idea that</p>
 <p><strong>Sliding Window &amp; Kadane’s Algorithm:</strong> If you take a closer look, you can see that Sliding Window and Kadane’s Algorithm are essentially the same exact algorithm but implemented differently.</p>
 <p><strong>Recurrence Relations:</strong> Note that DP/Kadane’s algorithm can be expressed by the recurrence relation</p>
 <p><span class="math display">\[\begin{align*}
@@ -542,7 +587,7 @@ Two different perspectives. <a href="https://www.lifehack.org/868287/perspective
 <p>Below I run the five different maximum subarray algorithms and time their runtime on inputs of different sizes. Every element of the input array is randomly (uniformly) choosen from the interval <span class="math inline">\([-100, 100]\)</span>.</p>
 <div class="cell" data-outputid="948a05ed-1015-413b-ce40-feaae326a17c">
 <div class="cell-output cell-output-display">
-<p><img src="maximum-subarray-sum_files/figure-html/cell-21-output-1.png" class="img-fluid"></p>
+<p><img src="maximum-subarray-sum_files/figure-html/cell-22-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <p>Note that, as expected, the <span class="math inline">\(O(n^2)\)</span> brute force algorithm is the slowest, the <span class="math inline">\(O(n log n)\)</span> divide and conquer algorithm is the second slowest, and the <span class="math inline">\(O(n)\)</span> sliding window algorithm, (non-constant space) dynamic programming algorithm, and Kadane’s algorithm are the fastest. This emperically confirms what we showed via theory.</p>
